@@ -919,13 +919,13 @@ body.modal-open {
 }
 
 .contact-details {
-  margin-bottom: 90px;
+  margin-bottom: 30px;
 }
 
 .contact-details > span {
   color: #1f2021;
   display: block;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
 }
 
 
@@ -1007,4 +1007,10 @@ table.table-hover tbody tr:hover {
 div.panel-heading:hover {
     background-color: #096c89;
 	color: #ffffff;	
+}
+
+p.instructions {
+	line-height: 150%;
+	padding: 5px;
+
 }
