@@ -10,6 +10,11 @@ window.onload = function () {
 
 GiveMode="whole";
 
+macro = "https://script.google.com/macros/s/AKfycbybU9-gV3XIMrgjkE0onLZcQfe7_yXpDy_fBclHFaR5vGjLLCqNhLhXSHzuPYOb5xEr7Q/exec";
+
+sheetID = "10WLo1fWiuVfTgDM9WB39jfwsGT3M2ZWuSM0xsEVAlJs";
+
+$( document ).ready(fetchResults); // fetch data from backend to populate sheet, once document is ready
 
 $(function(){
     /* ========================================================================= */
@@ -210,67 +215,66 @@ function recalcTotal() {
 
 function submitContribution() {
 	
-b = document.getElementById("msg-submit");
-b.style.backgroundColor="#aaaaaa";
-b.value="CHECKING";	
-b.disabled="disabled";
-inputs=document.getElementsByTagName("input")
+	b = document.getElementById("msg-submit");
+	b.style.backgroundColor="#aaaaaa";
+	b.value="SUBMITTING ...";	
+	b.disabled="disabled";
+	inputs=document.getElementsByTagName("input")
 
-for (i in inputs)
-	inputs[i].disabled="disabled";
+	for (i in inputs)
+		inputs[i].disabled="disabled";
 
-document.getElementById("cause-list").disabled=true;
+	document.getElementById("cause-list").disabled=true;
 
-document.getElementById("msg-txt").disabled="disabled";
-dels = document.getElementById("gift-table").getElementsByTagName("svg");
+	document.getElementById("msg-txt").disabled="disabled";
+	dels = document.getElementById("gift-table").getElementsByTagName("svg");
 
-for (d in dels)
-	dels[d].onclick="";
+	for (d in dels)
+		dels[d].onclick="";
 
-
-
-setTimeout(function () {
-						b = document.getElementById("msg-submit");
-						b.style.backgroundColor="#00c7fc";
-						b.value="SUBMITTED";
-						document.getElementById("response").style.display="block";
-					}, 3000); 
+	procRange(sheetID,"Gifts!A1:B2", postGift);
 
 return;
 }
 
+function postGift(data) {
+	
+	//alert("Row: "+data[0][0]+"\nGiftID: "+data[1][0]);
+	
+	document.getElementById("giftID").value = data[1][0];	// store giftID in hidden value in form
 
+	gift = ["1234",Date.now(), "Display","email","Message","Fund","$1234","{0:100,1:234,5:6422}"];
+	
+	range = "Gifts!B20";
 
-function getCell(sheetID, rangeName, htmlID) {
+	giftStr=gift.join("|");
+	
+	url = macro+"?action=setRange&sheet="+sheetID+"&range="+range+"&value="+giftStr+"&callback=?"
 
-  if(!sheetID)
-    sheetID = '1ZB-fGSOy-Z006AW_YZiBUsGsxlW03kuJmQh60PKzG-8';
-  if (!rangeName)
-    rangeName = 'Experiment!B3';
-    
-	url = "https://script.google.com/macros/s/AKfycbwARmLZht0rIZHsB61HljietXbQ29BFj0mtxZTeUpXzvAmg0VhLO1uYRsr62_MSDNE/exec?action=get&sheet="+sheetID+"&range="+rangeName+"&callback=?"
+	$.getJSON(url);
+	
+	// build link URL
+	
+	l = document.getElementById("donationLink");
+	amt = document.getElementById("gift-total").value;
+	giftID = document.getElementById("giftID").value;
+	
+	details = "&amount="+amt+"&note_text=for:RickieMakin;giftID="+giftID;
+	
+	l.href = l.href + details;
 
-	//alert(url);
+	b = document.getElementById("msg-submit");
+	b.style.backgroundColor="#00c7fc";
+	b.value="SUBMITTED";
+	document.getElementById("response").style.display="block";
 
-	$.getJSON(url,function(data){ document.getElementById(htmlID).value=data; });
-//	$.getJSON(url,function(data){ alert(data[0]);});
-  // var values = Sheets.Spreadsheets.Values.get(sheetID, rangeName).values;
-
- 
-  return;
+	return;	
 }
+
 
 function setCell(sheetID, rangeName, val) {
 
-  if(!sheetID)
-    sheetID = '1ZB-fGSOy-Z006AW_YZiBUsGsxlW03kuJmQh60PKzG-8';
-  if (!rangeName)
-    rangeName = 'Experiment!B3';
-  
-  if (!val)
-    val = 2;
-
-	url = "https://script.google.com/macros/s/AKfycbwARmLZht0rIZHsB61HljietXbQ29BFj0mtxZTeUpXzvAmg0VhLO1uYRsr62_MSDNE/exec?action=set&sheet="+sheetID+"&range="+rangeName+"&value="+val+"&callback=?"
+	url = macro+"?action=set&sheet="+sheetID+"&range="+rangeName+"&value="+val+"&callback=?"
 
 	//alert(url);
 
@@ -278,51 +282,98 @@ function setCell(sheetID, rangeName, val) {
 
 	$.getJSON(url);
 
-	if (rangeName == "Experiment!B1") { // if setting UserID, reset portfolio parameters		
-		setParameters();
-	}
   return;
 
 }
 
-function getRange(sheetID, rangeName, htmlID) {
 
-  if(!sheetID)
-    sheetID = '1ZB-fGSOy-Z006AW_YZiBUsGsxlW03kuJmQh60PKzG-8';
-  if (!rangeName)
-    rangeName = 'Experiment!B3';
+function procRange(sheetID, rangeName, func) {
     
-	url = "https://script.google.com/macros/s/AKfycbxlJlqJYGmM9aUgU85yKBIoDEkD8MRDV1tCdmVO21jROeXPIJcm8q0OB-abmyTpyBihjg/exec?action=getRange&sheet="+sheetID+"&range="+rangeName+"&callback=?"
+	url = macro+"?action=getRange&sheet="+sheetID+"&range="+rangeName+"&callback=?"
+
+	$.getJSON(url,func );
 
 
-
-//	alert(url);
-
-$.getJSON(url,function(data){ Range2Table(htmlID, data); });
-// $.getJSON(url,function(data){ alert(data.length);});
-  // var values = Sheets.Spreadsheets.Values.get(sheetID, rangeName).values;
-
- 
   return;
 }
 
-function Range2Table(htmlID, data) {
 
-	t = document.createElement("table");
-	t.id=htmlID+"-table";
+
+function fetchResults() {
+
+	//var sheetID = "10WLo1fWiuVfTgDM9WB39jfwsGT3M2ZWuSM0xsEVAlJs";
 	
-	for (r=0; r<data.length; r++) {
-		row = document.createElement("tr");
-		t.appendChild(row);
-		for (c=0; c<data[r].length; c++) {
-			col = document.createElement("td");
-			col.innerText = data[r][c];
-			row.appendChild(col);
+	// fetch Counter
+
+	procRange(sheetID,"Output!C2:F4",updateCounter);  // grab headers too to force array
+	
+	// fetch Messages
+	
+	procRange(sheetID,"Output!J3:K8", updateMessages);
+	
+	// fetch Recent Gifts
+	
+	procRange(sheetID,"Output!M3:O7", updateGifts);
+	
+}
+	
+
+function updateCounter(data) {
+	
+	//alert("updateCounter: "+data.length+"\n"+data[0]);
+	
+	// update total donations
+	
+	document.getElementById("totalDonations").innerText = data[1][0];
+	
+	// update count of donors
+	
+	document.getElementById("countDonors").innerText = data[1][1];
+	
+	// update funds remaining
+	
+	document.getElementById("fundsRemaining").innerText = data[1][2];
+
+	// update days running
+	
+	document.getElementById("daysRunning").innerText = data[1][3];
+
+}
+
+function updateMessages(data) {
+	
+	//alert("updateMessages: "+data.length+"\n"+data[0]);
+	
+	//alert(data);
+	
+	p = document.getElementById("testimonial").getElementsByTagName("p");
+	
+	s = document.getElementById("testimonial").getElementsByTagName("span");
+	
+	//alert("p length:"+p.length+"\ndata length:"+data.length);
+	
+	for (var r=0; r<data.length && r<p.length; r++) {
+		
+		s[r].innerText = data[r][0];
+		p[r].innerText = data[r][1];
+	}
+	
+}
+
+function updateGifts(data) {
+
+	//alert("updateGifts: "+data.length+"\n"+data[0]);	
+	
+	//alert(data);
+	
+	rows = document.getElementById("recentGifts").getElementsByTagName("tr");
+	
+	for (var r=0; r<rows.length; r++) {
+		
+		cells = rows[r].getElementsByTagName("td");
+		
+		for (c in cells) {
+			cells[c].innerText = data[r][c];
 		}
 	}
-	
-	document.getElementById(htmlID).appendChild(t);
-	
-//	alert(htmlID + data.length);
-	return;
 }

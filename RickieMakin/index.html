@@ -78,7 +78,7 @@
 
                     <!-- logo -->
                     <h1 class="navbar-brand">
-                        <a href="#body">
+                        <a href="http://www.requiem-fund.org/">
                             <img src="img/logo.png" alt="Requiem Logo" width="50%" height="50%">
                         </a>
                     </h1>
@@ -370,83 +370,7 @@
                     </figcaption>
                 </figure>
 
-                <figure class="mix portfolio-item education">
-                    <img class="img-responsive" src="img/portfolio/portfolio-1.jpg" alt="Portfolio Item" style="height:270px; width:350px">
 
-					<a href="#" class="plus btn-primary" data-toggle="modal" data-target="#portfolio-8"></a>
-
-					<!-- Modal -->
-					<div class="modal fade" id="portfolio-8" tabindex="-1" role="dialog" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-						  <div class="modal-header">
-							<a href="#" class="close" data-dismiss="modal" aria-label="Close">&times;</a></h5>
-							<h5 id="">Education Two</h5>
-						  </div>
-						  <div class="modal-body">
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-						  </div>
-						  
-						</div>
-					  </div>
-					</div>
-                    <figcaption class="mask">
-                        <h3>Education Two</h3>
-                        <span>Education</span>
-                    </figcaption>
-                </figure>
-
-                <figure class="mix portfolio-item refugees">
-                    <img class="img-responsive" src="img/portfolio/portfolio-4.jpg" alt="Portfolio Item" style="height:270px; width:350px">
-
-					<a href="#" class="plus btn-primary" data-toggle="modal" data-target="#portfolio-9"></a>
-
-					<!-- Modal -->
-					<div class="modal fade" id="portfolio-9" tabindex="-1" role="dialog" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-						  <div class="modal-header">
-							<a href="#" class="close" data-dismiss="modal" aria-label="Close">&times;</a></h5>
-							<h5 id="">Refugees Two</h5>
-						  </div>
-						  <div class="modal-body">
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-						  </div>
-						  
-						</div>
-					  </div>
-					</div>
-                    <figcaption class="mask">
-                        <h3>Refugees Two</h3>
-                        <span>Refugees</span>
-                    </figcaption>
-                </figure>
-
-                <figure class="mix portfolio-item refugees">
-                    <img class="img-responsive" src="img/portfolio/portfolio-4.jpg" alt="Portfolio Item" style="height:270px; width:350px">
-
-					<a href="#" class="plus btn-primary" data-toggle="modal" data-target="#portfolio-10"></a>
-
-					<!-- Modal -->
-					<div class="modal fade" id="portfolio-10" tabindex="-1" role="dialog" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-						  <div class="modal-header">
-							<a  href="#" class="close" data-dismiss="modal" aria-label="Close">&times;</a></h5>
-							<h5 id="">Refugees Three</h5>
-						  </div>
-						  <div class="modal-body">
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-						  </div>
-						  
-						</div>
-					  </div>
-					</div>
-                    <figcaption class="mask">
-                        <h3>Refugees Three</h3>
-                        <span>Refugees</span>
-                    </figcaption>
-                </figure>
 
             </div> <!-- end #projects -->
 
@@ -477,8 +401,9 @@
                                     <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
                                 </div>
                                 <div class="input-field message">
-                                    <textarea id="msg-txt" name="message" class="form-control" placeholder="Your Message"></textarea>
+                                    <textarea id="msg-txt" name="message"  placeholder="Your Message" class="form-control" rows="3" style="height:100%;"></textarea>
                                 </div>
+								<input type="hidden" id="giftID">
 								<h5 class="">Allocate my gift to</h5><br>
 								<div class="container">
 									<div class="row">
@@ -557,7 +482,7 @@
                         <div class="contact-details">
                             <h5>Allocation Instructions</h5><br>
                             <p class="instructions">By default, your gift goes to the whole fund and will be allocated across all the causes through matching. </p>
-							<p class="instructions">Alternatively, you may elect to nominate specific causes you would like your gift to go to. The fund will match dollar-for-dollar, while there is money remaining in the matching pool.</p>
+							<p class="instructions">Alternatively, you may elect to nominate specific causes for your gift. The fund will match dollar-for-dollar for those causes, while there is money remaining in the matching pool.</p>
                         </div> <!-- end .contact-details -->
 						
 						<div class="contact-details" id="selection-instructions" style="display:none">
@@ -569,9 +494,10 @@
                     </div> <!-- .col-md-4 -->
 
                 </div>
-				<div id="response" style="display:none">
-				<span>This is where the submit status goes</span>
-				<span>Please continue to the <a href="https://donate.communityfoundation.org.au/donation-form-subfund-type1?fid=JGzi1opuWnE%3d&fdesc=2GphDzDfcWdw4THTMpLnUrVBqq5KdMtwJmqb2hzNDmYs%2fCEtCNL6CNNHIG5OOe8M">Australian Communities Foundation</a> website to complete the donation. Remember to provide the same email address there to ensure your instructions are followed.</span>
+				<div id="response" style="display:none" class="text-center">
+					<h2>Thank you for your gift</h2><br/>
+					<h4>Please click through to the <a id="donationLink" href="https://australiacf.fcsuite.com/erp/donate/create?funit_id=1497">Australian Communities Foundation</a> website to complete your donation.</h4><br/>
+					<h4>Remember to provide the same email address there to ensure your instructions are followed.</h4>
 				</div>
             </div>
 
@@ -600,7 +526,7 @@
                                 <div class="fact-icon">
                                     <i class="fa fa-hand-holding-usd fa-2x"></i>
                                 </div>
-                                <span>$11,200</span>
+                                <span id="totalDonations"></span>
                                 <p>Total Donations</p>
                             </div>
                         </div>
@@ -610,7 +536,7 @@
                                 <div class="fact-icon">
                                     <i class="fa fa-users fa-2x"></i>                                    
                                 </div>
-                                <span>4</span>
+                                <span id="countDonors"></span>
                                 <p>Donors</p>
                             </div>
                         </div>
@@ -620,7 +546,7 @@
                                 <div class="fact-icon">
                                     <i class="fa fa-hourglass-half fa-2x"></i>
                                 </div>
-                                <span>$9,100</span>
+                                <span id="fundsRemaining"></span>
                                 <p>Matching Funds Remaining</p>
                             </div>
                         </div>
@@ -630,7 +556,7 @@
                                 <div class="fact-icon">
                                     <i class="fa fa-clock fa-2x"></i>
                                 </div>
-                                <span>17</span>
+                                <span id="daysRunning"></span>
                                 <p>Days Running</p>
                             </div>
                         </div>
@@ -653,15 +579,15 @@
                             <div class="tst-item clearfix">
                                 <div class="tst-single clearfix">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                        <span>Donor One</span>
+                                        <p></p>
+                                        <span></span>
                                     </div>
                                 </div>
 
                                  <div class="tst-single clearfix">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                        <span>Donor Two</span>
+										<p></p>
+                                        <span></span>
                                     </div>
                                 </div>
                            </div>
@@ -669,15 +595,15 @@
                             <div class="tst-item">
                                  <div class="tst-single clearfix">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                        <span>Donor Three</span>
+										<p></p>
+                                        <span></span>
                                     </div>
                                 </div>
 
                                  <div class="tst-single clearfix">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                        <span>Donor Four</span>
+										<p></p>
+                                        <span></span>
                                     </div>
                                 </div>
                             </div>
@@ -685,15 +611,15 @@
                             <div class="tst-item">
                                  <div class="tst-single clearfix">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                        <span>Donor Five</span>
+										<p></p>
+                                        <span></span>
                                     </div>
                                 </div>
 
                                  <div class="tst-single clearfix">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                        <span>Donor Six</span>
+										<p></p>
+                                        <span></span>
                                     </div>
                                 </div>
                             </div>
@@ -715,26 +641,31 @@
 										<th scope="col">Amount</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody  id="recentGifts">
 									<tr>
-										<td>June 23th, 2021</td>
-										<td>Donor Four</td>
-										<td>150</td>
+										<td></td>
+										<td></td>
+										<td></td>
 									</tr>
 									<tr>
-										<td>June 15th, 2021</td>
-										<td>Donor Three</td>
-										<td>50</td>
+										<td></td>
+										<td></td>
+										<td></td>
 									</tr>
 									<tr>
-										<td>June 5th, 2021</td>
-										<td>Donor Two</td>
-										<td>100</td>
+										<td></td>
+										<td></td>
+										<td></td>
 									</tr>
 									<tr>
-										<td>May 9th, 2021</td>
-										<td>Donor One</td>
-										<td>1000</td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
 									</tr>
 								</tbody>
 							</table>											                      
@@ -759,14 +690,13 @@
 					<div class="panel panel-default ">
 						<div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
 							 <h4 class="panel-title">
-								<a href="#faq" class="ing">Q: Where is the money held?</a>
+								<a href="#faq" class="ing">Q: Where does the money go?</a>
 						  </h4>
 
 						</div>
 						<div id="question0" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five <a href="http://jquery2dotnet.com/">http://jquery2dotnet.com/</a> centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-									</p>
+								<p class="instructions">All money is paid directly into a Named Sub-Fund within the <a href="https://www.communityfoundation.org.au/">Australian Communities Foundation</a>, a registered charity. ACF is Australia's only national community foundation. They operate a <a href="https://www.acnc.gov.au/tools/guidance/guides/private-and-public-ancillary-funds-and-acnc">Public Ancillary Fund</a> to provide administration, compliance, auditing and other governance services to philanthropists. Money held in trust before distribution to charities is <a href="https://www.communityfoundation.org.au/about/investments">invested responsibly.</a>.</p>
 							</div>
 						</div>
 					</div>
@@ -780,7 +710,7 @@
 						<div id="question1" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
 
-								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+								<p class="instructions">Yes. The Australian Communities Foundation will issue donors a receipt via email which can be used for tax deductions. All money distributed to charities through ACF are themselves holding a tax-deductible status.</p>
 							</div>
 						</div>
 					</div>
@@ -794,7 +724,9 @@
 						<div id="question2" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
 
-								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+								<p class="instructions">The Australian Communities Foundation deducts 2.2% of gifts made through their fund. This pays for their professional services including administration, auditing, compliance and related governance. This fee is inclusive of any costs they incur by payment providers. Further, a 0.37% per annum investment fee is charged on funds under management, to ensure money is not left idle. These funds are <a href="https://www.communityfoundation.org.au/about/investments">invested responsiby</a> and have provided annualised return to charities in excess of 3% over the last five years.</p>
+								
+								<p class="instructions">For the Warrnambool College Prize in Rickie's memory, an intermediary charity called <a href="https://www.schoolsplus.org.au/">Schools Plus</a> is required. This is because of the way the Australian Tax Office governs charities awarding scholarships directly to students. Schools Plus receives an additional 5% for setting up and operating the program.</p>
 							</div>
 						</div>
 					</div>
@@ -808,7 +740,7 @@
 						<div id="question3" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
 
-								<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+								<p class="instructions">A small group of people close to Rickie came together to select a portfolio of causes that reflect Rickie's values and life story. This includes Rickie's mum, Kay, partner, Jodie, and childhood friend, Greg. ACF's in-house grant-making experts provided consultation services and recommended a balanced portfolio of high quality charities.</p>
 							</div>
 						</div>
 					</div>
@@ -822,7 +754,7 @@
 						<div id="question4" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
 
-								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+								<p class="instructions">Please get in touch via email at <a href="mailto:contact@requiem-fund.org">contact@requiem-fund.org</a> and we'll sort it out.</p>
 							</div>
 						</div>
 					</div>
@@ -836,7 +768,7 @@
 						<div id="question5" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
 
-								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+								<p class="instructions">Yes. The Australian Communities Foundation handles recurring donations (weekly, monthly or quarterly). However, to ensure the correct calculation of matching funds, please contact via email at <a href="mailto:contact@requiem-fund.org">contact@requiem-fund.org</a> and we'll sort it out.</p>
 							</div>
 						</div>
 					</div>
@@ -850,7 +782,7 @@
 						<div id="question6" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
 
-								<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+								<p class="instructions">The Named Sub-Fund will collect instructions from donors about how they would like their gift used. When directed to the whole fund, the balance of the fund will increase and be made available to match to subsequent donor's gifts. When directed to specific causes, the balance of the fund will reduce by that amount, dollar-for-dollar, and double the donation will be made to that cause. Matching will cease when the balance of the fund goes to zero. If a "whole fund" gift is then made, the balance will be positive. Requests to match gifts will then resume. Only donations made through this fund will be matched. </p>
 							</div>
 						</div>
 					</div>					
@@ -871,8 +803,7 @@
                         <div class="footer-logo wow fadeInDown">
                             <div class="row">
 								<div class="col-sm-6">
-							
-									<img src="img/logo.png" alt="Requiem Logo">
+									<a href="http:///www.requiem-fund.org/"><img src="img/logo.png" alt="Requiem Logo"></a>
 								</div>
 								<div class="col">
 								<p>Powered by</p>
