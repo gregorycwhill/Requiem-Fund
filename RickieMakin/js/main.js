@@ -163,10 +163,10 @@ function setGiveMode(mode) {
 	return;
 }
 
-function deleteGiftItem(item) {
+function deleteGiftItem(elem) {
 	
-	r = document.getElementById(item);
-	r.remove();
+
+	elem.remove();
 	recalcTotal();
 	
 	return;
@@ -182,11 +182,10 @@ function addGiftItem() {
 	amount = a.value;
 	
 	row = document.createElement("tr")
-	row.id = Math.trunc(Math.random()*1000000);
 
 	document.getElementById("gift-table").style.display="inline"; // ensure gift-table is displayed
 
-	row.innerHTML="<td>"+cause+"</td><td>"+amount+"</td><td><i class=\"fa fa-trash-alt\" onclick=\"deleteGiftItem(this.parentElement.parentElement.id);\"></i></td><td  style='display: none'>"+value+"</td>";
+	row.innerHTML="<td style='display:none'>"+value+"</td><td>"+cause+"</td><td>"+amount+"</td><td><i class='fa fa-trash-alt' onclick='deleteGiftItem(this.parentElement.parentElement);'></i></td>";
 	document.getElementById("gift-table").getElementsByTagName("tbody")[0].appendChild(row);
 
 	recalcTotal();
@@ -219,6 +218,9 @@ function submitContribution() {
 	b.style.backgroundColor="#aaaaaa";
 	b.value="SUBMITTING ...";	
 	b.disabled="disabled";
+	
+	//document.getElementById("spinner").style.display="block";
+	
 	inputs=document.getElementsByTagName("input")
 
 	for (i in inputs)
@@ -241,33 +243,68 @@ function postGift(data) {
 	
 	//alert("Row: "+data[0][0]+"\nGiftID: "+data[1][0]);
 	
-	document.getElementById("giftID").value = data[1][0];	// store giftID in hidden value in form
-
-	gift = ["1234",Date.now(), "Display","email","Message","Fund","$1234","{0:100,1:234,5:6422}"];
+	offset=data[0][0];
+	giftID=data[1][0];
 	
-	range = "Gifts!B20";
+		
+	document.getElementById("giftID").value = giftID;	// store giftID in hidden value in form
+
+	name 	= document.getElementsByName("contribution")[0]["name"].value;
+	email 	= document.getElementsByName("contribution")[0]["email"].value;
+	message = document.getElementsByName("contribution")[0]["message"].value;
+	gtype 	= document.getElementsByName("contribution")[0]["gift-type"].value;
+	amount	= document.getElementsByName("contribution")[0]["total"].value;
+	
+	dt = new Date(Date.now()).toLocaleString().replace(",","");
+	
+	rows = document.getElementById("gift-table").getElementsByTagName("tr");
+	
+	instr = "{";
+	
+	for (r=1; r<rows.length; r++) {		// skip header row
+		instr += rows[r].firstChild.innerText;
+		instr += ":";
+		instr += rows[r].firstChild.nextSibling.nextSibling.innerText;
+		instr += ",";
+	}
+	
+	instr += "}";
+	instr=instr.replace(",}","}");
+	
+	if (gtype=="whole")
+		instr="";
+	
+	gift = [giftID, dt, name,email,message,gtype,amount ,instr];
+	
+	range = "Gifts!B"+offset;
 
 	giftStr=gift.join("|");
 	
 	url = macro+"?action=setRange&sheet="+sheetID+"&range="+range+"&value="+giftStr+"&callback=?"
 
-	$.getJSON(url);
+	$.getJSON(url).fail(throwError);
 	
 	// build link URL
 	
 	l = document.getElementById("donationLink");
-	amt = document.getElementById("gift-total").value;
-	giftID = document.getElementById("giftID").value;
-	
-	details = "&amount="+amt+"&note_text=for:RickieMakin;giftID="+giftID;
+	details = "&amount="+amount+"&note_text=for:RickieMakin;from:"+email+";giftID="+giftID;
 	
 	l.href = l.href + details;
 
 	b = document.getElementById("msg-submit");
 	b.style.backgroundColor="#00c7fc";
 	b.value="SUBMITTED";
-	document.getElementById("response").style.display="block";
 
+	document.getElementById("response").style.display="block";
+	document.getElementById("check").style.display="block";
+	document.getElementById("spinner").style.display="none";
+	
+	//setTimeout($('#submit-dialog').modal('hide'),5000);
+	
+	setTimeout(function(){$('#submit-dialog').modal('hide')},2000);
+	
+	document.getElementById("msg-submit").scrollIntoView(true);
+	
 	return;	
 }
 
@@ -280,7 +317,7 @@ function setCell(sheetID, rangeName, val) {
 
 	//$.getJSON(url,function(data){ alert(data.updatedRows);});
 
-	$.getJSON(url);
+	$.getJSON(url).fail(throwError);
 
   return;
 
@@ -291,7 +328,7 @@ function procRange(sheetID, rangeName, func) {
     
 	url = macro+"?action=getRange&sheet="+sheetID+"&range="+rangeName+"&callback=?"
 
-	$.getJSON(url,func );
+	$.getJSON(url,func ).fail(throwError);
 
 
   return;
@@ -316,7 +353,13 @@ function fetchResults() {
 	procRange(sheetID,"Output!M3:O7", updateGifts);
 	
 }
+
+function throwError() {
 	
+	alert("Error!");
+	
+	document.getElementById("error").style.display="block";
+}	
 
 function updateCounter(data) {
 	
