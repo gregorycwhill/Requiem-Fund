@@ -198,13 +198,11 @@ function recalcTotal() {
 	g = document.getElementById("gift-table").getElementsByTagName("tr");
 	
 	t = 0;
-	for (i in g) {
-		
-		if(g[i].id) {
-			v = parseInt(g[i].childNodes[1].innerText);
-			//alert(v);
-			t += v;
-		}
+	for (var i=1; i<g.length; i++) { // skip header row
+
+		v = parseInt(g[i].childNodes[2].innerText);
+		//alert(v);
+		t += v;
 	}
 	
 	document.getElementById("gift-total").value=t;
