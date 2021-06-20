@@ -19,7 +19,7 @@
         <!--
         Google Fonts
         ============================================= -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
 		
         <!--
         CSS
@@ -78,7 +78,7 @@
 
                     <!-- logo -->
                     <h1 class="navbar-brand">
-                        <a href="http://www.requiem-fund.org/">
+                        <a href="https://www.requiem-fund.org/">
                             <img src="img/logo.png" alt="Requiem Logo" width="50%" height="50%">
                         </a>
                     </h1>
@@ -386,7 +386,6 @@
         <section id="contribute">
             <div class="container">
                 <div class="row">
-
                     <div class="section-title text-center wow fadeInDown">
                         <h2>Contribute</h2>
                         <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
@@ -467,7 +466,7 @@
 								<div class="col-sm-3 input-field">
                                     <input type="number" class="form-control" name="total" id="gift-total" placeholder="100" required="" min="1" max="10000">
                                 </div>
-                                <input type="submit" class="btn btn-blue pull-right" value="CONFIRM" id="msg-submit" onclick="">
+                                <input type="submit" class="btn btn-blue pull-right" value="CONFIRM" id="msg-submit" onclick="" data-toggle="modal" data-target="#submit-dialog">
                             </form>
                         </div> <!-- end .contact-form -->
                     </div> <!-- .col-md-8 -->
@@ -494,19 +493,43 @@
                     </div> <!-- .col-md-4 -->
 
                 </div>
-				<div id="response" style="display:none" class="text-center">
-					<h2>Thank you for your gift</h2><br/>
-					<h4>Please click through to the <a id="donationLink" href="https://australiacf.fcsuite.com/erp/donate/create?funit_id=1497">Australian Communities Foundation</a> website to complete your donation.</h4><br/>
-					<h4>Remember to provide the same email address there to ensure your instructions are followed.</h4>
-				</div>
-            </div>
-
+			</div>
         </section>
+
+		<!-- Modal -->
+		<div class="modal fade" id="submit-dialog" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content" style="">
+					<div class="modal-body">
+						<div id="spinner" class="text-center">
+							<img height="100px;" width="100px;" src="img/icons/spinner.gif">
+						</div>
+						<div id="check" style="display:none" class="text-center">
+							<img height="100px;" width="100px;" src="img/icons/check.png">
+						</div>
+						<div id="error" style="display:none" class="text-center">
+							<br/><h2>Uh oh ... </h2><br/>
+							<h4>Something has gone wrong with this transaction.</h4><br/>
+							<h5>Please drop a note to <a href="mailto:contact@requiem-fund.org">contact@requiem-fund.org</a> to get support.</h5>											
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
         <!--
         End #contribute
         ========================== -->
 
-
+		<div id="response" class="text-center" style="display:none" >
+			<div class="text-center">
+				<img height="76px;" width="76px;" src="img/icons/check.png">
+			</div>
+			<br/><h2>Thank you for your gift</h2><br/>
+			<h4>Please click through to the <a id="donationLink" href="https://australiacf.fcsuite.com/erp/donate/create?funit_id=1497">Australian Communities Foundation</a> website to complete your donation.</h4><br/>
+			<h5>Remember to provide the same email address there to ensure your instructions are followed.</h5>
+		</div>
          <!--
         #donors
         ========================== -->
@@ -724,7 +747,7 @@
 						<div id="question2" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
 
-								<p class="instructions">The Australian Communities Foundation deducts 2.2% of gifts made through their fund. This pays for their professional services including administration, auditing, compliance and related governance. This fee is inclusive of any costs they incur by payment providers. Further, a 0.37% per annum investment fee is charged on funds under management, to ensure money is not left idle. These funds are <a href="https://www.communityfoundation.org.au/about/investments">invested responsiby</a> and have provided annualised return to charities in excess of 3% over the last five years.</p>
+								<p class="instructions">The Australian Communities Foundation <a href="https://www.communityfoundation.org.au/giving/fees">deducts a fee</a> of 2.2% per annum on money held within the fund. This pays for their professional services including administration, auditing, compliance and related governance. This fee is inclusive of any costs they incur by payment providers. Further, a 0.37% per annum investment fee is charged on funds under management, to ensure money is not left idle. These funds are <a href="https://www.communityfoundation.org.au/about/investments">invested responsiby</a> and have provided annualised return to charities in excess of 3% over the last five years.</p>
 								
 								<p class="instructions">For the Warrnambool College Prize in Rickie's memory, an intermediary charity called <a href="https://www.schoolsplus.org.au/">Schools Plus</a> is required. This is because of the way the Australian Tax Office governs charities awarding scholarships directly to students. Schools Plus receives an additional 5% for setting up and operating the program.</p>
 							</div>
@@ -803,7 +826,7 @@
                         <div class="footer-logo wow fadeInDown">
                             <div class="row">
 								<div class="col-sm-6">
-									<a href="http:///www.requiem-fund.org/"><img src="img/logo.png" alt="Requiem Logo"></a>
+									<a href="https:///www.requiem-fund.org/"><img src="img/logo.png" alt="Requiem Logo"></a>
 								</div>
 								<div class="col">
 								<p>Powered by</p>
@@ -816,15 +839,15 @@
                         <div class="footer-social wow fadeInUp">
                             <h3>Share on Social</h3>
                             <ul class="text-center list-inline">
-                                <li><a href="http://goo.gl/RqhEjP"><i class="fab fa-facebook fa-lg"></i></a></li>
-                                <li><a href="http://goo.gl/hUfpSB"><i class="fab fa-twitter fa-lg"></i></a></li>
-                                <li><a href="http://goo.gl/r4xzR4"><i class="fab fa-instagram fa-lg"></i></a></li>
-                                <li><a href="http://goo.gl/k9zAy5"><i class="fab fa-snapchat fa-lg"></i></a></li>
+                                <li><a href="https://goo.gl/RqhEjP"><i class="fab fa-facebook fa-lg"></i></a></li>
+                                <li><a href="https://goo.gl/hUfpSB"><i class="fab fa-twitter fa-lg"></i></a></li>
+                                <li><a href="https://goo.gl/r4xzR4"><i class="fab fa-instagram fa-lg"></i></a></li>
+                                <li><a href="https://goo.gl/k9zAy5"><i class="fab fa-snapchat fa-lg"></i></a></li>
                             </ul>
                         </div>
 						
                         <div class="copyright">
-                            <p style="font-size:10px">Theme by <a href="http://graphberry.com">GraphBerry.com</a> Developed by <a target="_blank" href="http://www.themefisher.com">Themefisher</a></p>
+                            <p style="font-size:10px">Theme by <a href="https://graphberry.com">GraphBerry.com</a> Developed by <a target="_blank" href="https://www.themefisher.com">Themefisher</a></p>
                         </div>
 
                     </div>
