@@ -232,6 +232,9 @@ function submitContribution() {
 	for (d in dels)
 		dels[d].onclick="";
 
+
+	$('#submit-dialog').modal('show');
+	
 	procRange(sheetID,"Gifts!A1:B2", postGift);
 
 return;
@@ -240,6 +243,11 @@ return;
 function postGift(data) {
 	
 	//alert("Row: "+data[0][0]+"\nGiftID: "+data[1][0]);
+	
+	if( !data | data.length==0) {
+			throwError();
+			return;
+	}
 	
 	offset=data[0][0];
 	giftID=data[1][0];
@@ -354,13 +362,17 @@ function fetchResults() {
 
 function throwError() {
 	
-	alert("Error!");
+	//alert("Error!");
 	
 	document.getElementById("error").style.display="block";
 }	
 
 function updateCounter(data) {
-	
+
+	if( !data | data.length==0) {
+			throwError();
+			return;
+	}	
 	//alert("updateCounter: "+data.length+"\n"+data[0]);
 	
 	// update total donations
@@ -383,6 +395,11 @@ function updateCounter(data) {
 
 function updateMessages(data) {
 	
+	if( !data | data.length==0) {
+			throwError();
+			return;
+	}
+	
 	//alert("updateMessages: "+data.length+"\n"+data[0]);
 	
 	//alert(data);
@@ -403,6 +420,11 @@ function updateMessages(data) {
 
 function updateGifts(data) {
 
+	if( !data | data.length==0) {
+			throwError();
+			return;
+	}
+	
 	//alert("updateGifts: "+data.length+"\n"+data[0]);	
 	
 	//alert(data);
