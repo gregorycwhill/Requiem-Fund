@@ -544,8 +544,9 @@ body.modal-open {
 
 .modal-dialog {
   display: inline-block;
-  text-align: left;
+  text-align: justify;
   vertical-align: middle;
+  line-height: 150%;
 }
 
 /*============================================================
