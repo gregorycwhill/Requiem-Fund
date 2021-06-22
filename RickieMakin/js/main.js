@@ -376,7 +376,7 @@ function throwError() {
 
 function updateCounter(data) {
 
-	if( !data | data.length==0) {
+	if( !data) {
 			throwError();
 			return;
 	}	
@@ -402,7 +402,7 @@ function updateCounter(data) {
 
 function updateMessages(data) {
 	
-	if( !data | data.length==0) {
+	if( !data) {
 			throwError();
 			return;
 	}
@@ -427,7 +427,7 @@ function updateMessages(data) {
 
 function updateGifts(data) {
 
-	if( !data | data.length==0) {
+	if( !data) {
 			throwError();
 			return;
 	}
@@ -438,7 +438,7 @@ function updateGifts(data) {
 	
 	rows = document.getElementById("recentGifts").getElementsByTagName("tr");
 	
-	for (var r=0; r<rows.length; r++) {
+	for (var r=0; r<rows.length && r<data.length; r++) {
 		
 		cells = rows[r].getElementsByTagName("td");
 		
