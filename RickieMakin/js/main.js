@@ -364,7 +364,14 @@ function throwError() {
 	
 	//alert("Error!");
 	
+	$('#submit-dialog').modal('show');
+	
+	document.getElementById("spinner").style.display="none";
+	document.getElementById("check").style.display="none";
+		
 	document.getElementById("error").style.display="block";
+	
+	return;
 }	
 
 function updateCounter(data) {
