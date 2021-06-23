@@ -211,6 +211,13 @@ function recalcTotal() {
 }
 
 function submitContribution() {
+
+	// need to check if "specific" is selected but gift total is zero. If so, pop up a warning.
+
+	if (GiveMode=="specific" && document.getElementById("gift-total").value==0) {
+		alert("Please select some causes from the menu and enter an amount to give. Use the + button to add the gift.");
+		return;
+	}
 	
 	b = document.getElementById("msg-submit");
 	b.style.backgroundColor="#aaaaaa";
