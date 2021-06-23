@@ -356,7 +356,7 @@ function fetchResults() {
 	
 	// fetch Recent Gifts
 	
-	procRange(sheetID,"Output!M3:O7", updateGifts);
+	procRange(sheetID,"Output!M3:O12", updateGifts);
 	
 }
 
