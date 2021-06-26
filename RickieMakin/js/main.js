@@ -359,11 +359,11 @@ function fetchResults() {
 	
 	// fetch Messages
 	
-	procRange(sheetID,"Output!J3:K8", updateMessages);
+	procRange(sheetID,"Output!J3:K10", updateMessages);
 	
 	// fetch Recent Gifts
 	
-	procRange(sheetID,"Output!M3:O12", updateGifts);
+	procRange(sheetID,"Output!M3:O16", updateGifts);
 	
 }
 
