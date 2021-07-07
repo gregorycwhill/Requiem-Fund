@@ -363,7 +363,7 @@ function fetchResults() {
 	
 	// fetch Recent Gifts
 	
-	procRange(sheetID,"Output!M3:O16", updateGifts);
+	procRange(sheetID,"Output!M3:O23", updateGifts);
 	
 }
 
