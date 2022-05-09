@@ -68,7 +68,7 @@ body > section {
 }
 
 .section-title {
-  margin: 0 auto 85px;
+  margin: 0 auto 105px;
   width: 520px;
 }
 
@@ -157,7 +157,7 @@ width: 11px;
 }
 
 #navigation > .container {
-  border-bottom: 1px solid #636364;
+  border-bottom: 0px solid #636364;
 }
 
 .animated-nav#navigation > .container {
@@ -320,18 +320,18 @@ width: 11px;
 
 
 .carousel-indicators li {
-  margin: 20px;
-  height: 20px;
-  width:  20px;
+  margin: 2px;
+  height: 2px;
+  width:  2px;
 }
 
 
 .carousel-indicators .active {
   background-color: #00c7fc;
   border: 0;
-  margin: 20px;
-  height: 22px;
-  width:  22px;
+  margin: 0px;
+  height: 0px;
+  width:  0px;
 
 }
 
@@ -447,7 +447,7 @@ width: 11px;
 ============================================================*/
 
 #projects {
-    width: 100%;
+    width: 80%;
 }
 
 .project-filter {
@@ -478,10 +478,10 @@ width: 11px;
 
 .portfolio-item {
     position: relative;
-    float: left;
+    float: none;
     overflow: hidden;
     width: 25%;
-	padding: 5px 10px;
+	padding: 20px 35px;
 }
 
 .plus {
@@ -505,9 +505,9 @@ width: 11px;
 
 figcaption.mask {
   background-color: #fff;
-  bottom: -101px;
+  bottom: -80px;
   left: 0;
-  padding: 30px 0 30px 30px;
+  padding: 10px 0 10px 10px;
   position: absolute;
   width: 100%;
     

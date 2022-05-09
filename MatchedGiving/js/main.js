@@ -8,8 +8,6 @@ window.onload = function () {
 
 // Global Vars
 
-GiveMode="whole";
-
 macro = "https://script.google.com/macros/s/AKfycbybU9-gV3XIMrgjkE0onLZcQfe7_yXpDy_fBclHFaR5vGjLLCqNhLhXSHzuPYOb5xEr7Q/exec";
 
 sheetID = "10WLo1fWiuVfTgDM9WB39jfwsGT3M2ZWuSM0xsEVAlJs";
@@ -132,92 +130,52 @@ function progress(percent, $element) {
 }   
 
 
-function setGiveMode(mode) {
-
-	if (mode=="whole") {
-		GiveMode = "whole";
-		val="none";
-		document.getElementById("gift-total").readOnly=false;
+function toggleCause(cause) {
+	
+	fig = document.getElementById(cause);
+	opt = document.getElementById("opt-"+cause);
+	
+	if (opt.style.display=="inline") {
+		
+		// cause has been selected
+		
+		fig.style.border="";
+		opt.style.display = "none";
 	}
 	else {
-		GiveMode = "specific";
-		val="inline";
-		document.getElementById("gift-total").readOnly=true;
-		recalcTotal();
+		// cause has not been selected
+		
+		fig.style.border="5px solid #00C7FC";
+		opt.style="display: inline;";
+	}
+}
 
+function setRequiem() {
+	
+	
+	figs = document.getElementsByTagName("figure");
+	for (f=0;f<figs.length; f++) {
+		figs[f].style.border="";
 	}
 	
-	document.getElementById("cause-selector").style.display=val;
-	document.getElementById("cause-amount").style.display=val;
-	document.getElementById("add-cause").style.display=val;
-	document.getElementById("selection-instructions").style.display=val;
-
-	// check if the gift table is populated and only display if "specific" and populated
+	figs[figs.length-1].style.border="5px solid #00C7FC";
 	
-	if (document.getElementById("gift-table").getElementsByTagName("tr").length>1) {
-		document.getElementById("gift-table").style.display=val; // display
-	}
-	else
-		document.getElementById("gift-table").style.display="none"; // display
-	
-	return;
-}
-
-function deleteGiftItem(elem) {
-	
-
-	elem.remove();
-	recalcTotal();
-	
-	return;
-}
-	
-function addGiftItem() {
-	
-	s=document.forms[0]["cause-list"];
-	cause = s.options[s.selectedIndex].text;
-	value = s.options[s.selectedIndex].value;
-
-	a=document.forms[0]["cause-amount"];
-	amount = a.value;
-	
-	row = document.createElement("tr")
-
-	document.getElementById("gift-table").style.display="inline"; // ensure gift-table is displayed
-
-	row.innerHTML="<td style='display:none'>"+value+"</td><td>"+cause+"</td><td>"+amount+"</td><td><i class='fa fa-trash-alt' onclick='deleteGiftItem(this.parentElement.parentElement);'></i></td>";
-	document.getElementById("gift-table").getElementsByTagName("tbody")[0].appendChild(row);
-
-	recalcTotal();
-	
-	return;
-}
-
-function recalcTotal() {
-	
-	g = document.getElementById("gift-table").getElementsByTagName("tr");
-	
-	t = 0;
-	for (var i=1; i<g.length; i++) { // skip header row
-
-		v = parseInt(g[i].childNodes[2].innerText);
-		//alert(v);
-		t += v;
+	opts = document.getElementsByTagName("label");
+	for (l=0; l<opts.length-1; l++) {
+		if(opts[l].id=="opt-requiem") {
+			opts[l].style.display="inline";
+		}
+		else {
+			opts[l].style.display="none";
+		}
 	}
 	
-	document.getElementById("gift-total").value=t;
-
-	return;
-}
+	//document.getElementById("claimMatch").style.display="block";
+}	
+	
 
 function submitContribution() {
 
-	// need to check if "specific" is selected but gift total is zero. If so, pop up a warning.
-
-	if (GiveMode=="specific" && document.getElementById("gift-total").value==0) {
-		alert("Please select some causes from the menu and enter an amount to give. Use the + button to add the gift.");
-		return;
-	}
 	
 	b = document.getElementById("msg-submit");
 	b.style.backgroundColor="#aaaaaa";
@@ -226,7 +184,7 @@ function submitContribution() {
 	
 	//document.getElementById("spinner").style.display="block";
 	
-	inputs=document.getElementsByTagName("input")
+	inputs=document.getElementsByTagName("label")
 
 	for (i in inputs)
 		inputs[i].disabled="disabled";
@@ -357,13 +315,6 @@ function fetchResults() {
 
 	procRange(sheetID,"Output!C2:F4",updateCounter);  // grab headers too to force array
 	
-	// fetch Messages
-	
-	procRange(sheetID,"Output!J3:K10", updateMessages);
-	
-	// fetch Recent Gifts
-	
-	procRange(sheetID,"Output!M3:O23", updateGifts);
 	
 }
 
@@ -407,50 +358,3 @@ function updateCounter(data) {
 
 }
 
-function updateMessages(data) {
-	
-	if( !data) {
-			throwError();
-			return;
-	}
-	
-	//alert("updateMessages: "+data.length+"\n"+data[0]);
-	
-	//alert(data);
-	
-	p = document.getElementById("testimonial").getElementsByTagName("p");
-	
-	s = document.getElementById("testimonial").getElementsByTagName("span");
-	
-	//alert("p length:"+p.length+"\ndata length:"+data.length);
-	
-	for (var r=0; r<data.length && r<p.length; r++) {
-		
-		s[r].innerText = data[r][0];
-		p[r].innerText = data[r][1];
-	}
-	
-}
-
-function updateGifts(data) {
-
-	if( !data) {
-			throwError();
-			return;
-	}
-	
-	//alert("updateGifts: "+data.length+"\n"+data[0]);	
-	
-	//alert(data);
-	
-	rows = document.getElementById("recentGifts").getElementsByTagName("tr");
-	
-	for (var r=0; r<rows.length && r<data.length; r++) {
-		
-		cells = rows[r].getElementsByTagName("td");
-		
-		for (c in cells) {
-			cells[c].innerText = data[r][c];
-		}
-	}
-}
