@@ -63,7 +63,7 @@
         <!--
         Fixed Navigation
         ==================================== -->
-        <header id="navigation" class="navbar-fixed-top">
+        <header id="navigation" class="navbar-fixed-top animated-nav">
             <div class="container">
 
                 <div class="navbar-header">
@@ -92,7 +92,6 @@
                             <li class="current"><a href="#home">Home</a></li>
                             <li><a href="#causes">Causes</a></li>
                             <li><a href="#contribute">Contribute</a></li>
-                            <li><a href="#donors">Campaign</a></li>
                             <li><a href="#faq">FAQ</a></li>
 							<li><a href="#footer">About</a></li>
                         </ul>
@@ -107,37 +106,66 @@
         End Fixed Navigation
         ==================================== -->
 
+         <section id="home">
+           <div class="section-title text-center wow fadeInDown" style="padding-top: 30px;">
+                <h2>Matching gifts</h2>
+                <p>The <a href="https://www.requiem-fund.org/" style="color: #096c89; text-decoration: underline;">Requiem Fund</a> is currently matching donations to causes that were supported by those we've lost. In this way, we honour their memories and share their values.</p><br>
+				<p>Thanks to the donors of the <a href="https://requiem-fund.org/RickieMakin/" style="color: #096c89; text-decoration: underline;">Rickie Makin Requiem Fund</a>; their generosity makes this possible.</p><br>
+				<p>The fund is auspiced under the <a href="https://www.communityfoundation.org.au/" style="color: #096c89; text-decoration: underline;">Australian Communities Foundation</a>. </p>
+  
+            </div>
+   
+			<div class="container">
+                <div class="row">
+                    <div class="counter-section clearfix">
 
-        <!--
-        Home Slider
-        ==================================== -->
-        <section id="home">     
-            <div id="home-carousel" class="carousel slide" data-interval="false">
-                <ol class="carousel-indicators">
-                    <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
-                </ol>
-                <!--/.carousel-indicators-->
-
-                <div class="carousel-inner">
-
-                    <div class="item active"  style="background-image: url('img/slider/bg1.jpg')" >
-                        <div class="carousel-caption">
-                            <div class="animated fadeInUp">
-                                <h2>Matching gifts</h2>
-                                <p>The <a href="https://www.requiem-fund.org/" style="color: #ffffff; text-decoration: underline;">Requiem Fund</a> is currently matching donations to causes that were supported by those we've lost. In this way, we honour their memories and share their values.</p><br>
-								<p>Thanks to the donors of the <a href="https://requiem-fund.org/RickieMakin/" style="color: #ffffff; text-decoration: underline;">Rickie Makin Requiem Fund</a>; their generosity makes this possible.</p>
-								<p>The fund is auspiced under the <a href="https://www.communityfoundation.org.au/" style="color: #ffffff; text-decoration: underline;">Australian Communities Foundation</a>. </p>
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.5s">
+                            <div class="fact-item text-center">
+                                <div class="fact-icon">
+                                    <i class="fa fa-hand-holding-usd fa-2x"></i>
+                                </div>
+                                <span id="totalDonations"></span>
+                                <p>Total Donations</p>
                             </div>
                         </div>
-                    </div>              
+                        
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.8s">
+                            <div class="fact-item text-center">
+                                <div class="fact-icon">
+                                    <i class="fa fa-users fa-2x"></i>                                    
+                                </div>
+                                <span id="countDonors"></span>
+                                <p>Donors</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="1.1s">
+                            <div class="fact-item text-center last">
+                                <div class="fact-icon">
+                                    <i class="fa fa-hourglass-half fa-2x"></i>
+                                </div>
+                                <span id="fundsRemaining"></span>
+                                <p>Matching Funds Remaining</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="1.3s">
+                            <div class="fact-item text-center last">
+                                <div class="fact-icon">
+                                    <i class="fa fa-clock fa-2x"></i>
+                                </div>
+                                <span id="daysRunning"></span>
+                                <p>Days Running</p>
+                            </div>
+                        </div>
 
-              </div>
+                    </div>
+                </div>
             </div>
         </section>
         <!--
-        End #home Slider
+        End #about-us
         ========================== -->
-  
  
         <!--
         #causes
@@ -147,10 +175,8 @@
 
             <div class="section-title text-center wow fadeInDown">
                 <h2>Current Causes</h2>    
-                <p>These charities and not-for-profit causes are available for matched giving.</p>
-				<p>Please select one or more that you would like to donate to by clicking on the image.</p>
-				<p>To deselect a cause, please click again to remove the blue box.</p>
-				<p>You can find out more about the cause by clicking on the question mark icon.</p>
+                <p>These charities and not-for-profit causes are available for matched giving.</p><br>
+				<p>Please select one or more that you would like to donate to by clicking on the image. To deselect a cause, please click again to remove the blue box. You can find out more about the cause by clicking on the question mark icon.</p>
             </div>
             
             <nav class="project-filter clearfix text-center wow fadeInLeft"  data-wow-delay="0.5s">
@@ -198,7 +224,7 @@
                 </figure>
 
                 <figure class="mix portfolio-item animals" id="rspca" onclick="toggleCause(this.id);">
-                    <img class="img-responsive" src="img/portfolio/rspca-logo.jpg" alt="RSPCA">
+                    <img class="img-responsive" src="img/portfolio/rspca-logo.png" alt="RSPCA">
 					<a href="#" class="plus btn-primary" data-toggle="modal" data-target="#portfolio-2"></a>
 
 					<!-- Modal -->
@@ -212,7 +238,7 @@
 						  <div class="modal-body row">
 							<div class="container col-sm-12 col-md-12 col-lg-12">
 								<div class="col-sm-3 col-md-3 col-lg-3">
-									<a href="https://www.rspca.org.au/"><img src="img/portfolio/rspca-logo.jpg" style="width:120px"></a>
+									<a href="https://www.rspca.org.au/"><img src="img/portfolio/rspca-logo.png" style="width:120px"></a>
 								</div>
 								<div class="col-sm-9 col-md-9 col-lg-9">
 									<p>The Royal Society for Protection of Cruelty to Animals - better known as the RSPCA - has been promoting the welfare and wellbeing of animals in Australia for over 150 years. In addition to rehoming animals, they provide advocacy, education and investigation and prosecution of cruelty to animals.</p><br>
@@ -255,7 +281,7 @@
 					  </div>
 					</div>
                     <figcaption class="mask">
-                        <h5 style="text-align: center">University of Melbourne Student Support Fund</h5><br>
+                        <h5 style="text-align: center">University of Melbourne Student Support</h5><br>
                         <span>Education</span>
                     </figcaption>
                 </figure>
@@ -324,7 +350,7 @@
                 </figure>
 
                  <figure class="mix portfolio-item education" id="wboolcollege" onclick="toggleCause(this.id);">
-                    <img class="img-responsive" src="img/portfolio/wblcoll-logo.jpg" alt="Warrnambool College">
+                    <img class="img-responsive" src="img/portfolio/wblcoll-logo.png" alt="Warrnambool College">
 					<a href="#" class="plus btn-primary" data-toggle="modal" data-target="#portfolio-6"></a>
 
 					<!-- Modal -->
@@ -338,7 +364,7 @@
 						  <div class="modal-body row">
 							<div class="container col-sm-12 col-md-12 col-lg-12">
 								<div class="col-sm-3 col-md-3 col-lg-3">
-									<a href="https://www.wblcoll.vic.edu.au/"><img src="img/portfolio/wblcoll-logo.jpg" style="width:120px"></a>
+									<a href="https://www.wblcoll.vic.edu.au/"><img src="img/portfolio/wblcoll-logo.png" style="width:120px"></a>
 								</div>
 								<div class="col-sm-9 col-md-9 col-lg-9">
 									<p>Warrnambool College is a leading secondary government high school in Southwest Victoria. Through this fund, the school will be offering a prize to students to recognise their achievements in digital technology while creating opportunities for their ongoing education.</p><br>
@@ -355,7 +381,7 @@
                 </figure>
 
                 <figure class="mix portfolio-item refugees" id="unhcr" onclick="toggleCause(this.id);">
-                    <img class="img-responsive" src="img/portfolio/unhcr-logo.jpg" alt="United Nations High Commission for Refugees">
+                    <img class="img-responsive" src="img/portfolio/unhcr-logo.png" alt="United Nations High Commission for Refugees">
 					<a href="#" class="plus btn-primary" data-toggle="modal" data-target="#portfolio-7"></a>
 
 					<!-- Modal -->
@@ -369,7 +395,7 @@
 						  <div class="modal-body row">
 							<div class="container col-sm-12 col-md-12 col-lg-12">
 								<div class="col-sm-3 col-md-3 col-lg-3">
-									<a href="https://www.unrefugees.org.au/"><img src="img/portfolio/unhcr-logo.jpg" style="width:120px"></a>
+									<a href="https://www.unrefugees.org.au/"><img src="img/portfolio/unhcr-logo.png" style="width:120px"></a>
 								</div>
 								<div class="col-sm-9 col-md-9 col-lg-9">
 									<p>Australia for UNHCR is the UN Refugee Agency’s national partner in Australia, raising awareness and funds to support UNHCR’s global emergency response to humanitarian crises, such as shelter, protection, clean water, food and medicines. Australia for UNHCR also directly funds projects that support longer-term care such as building schools, running livelihood programs and providing healthcare.</p><br>
@@ -385,8 +411,8 @@
                     </figcaption>
                 </figure>
 
-                <figure class="mix portfolio-item all" id="requiem" style="border:5px solid #00C7FC"; onclick="toggleCause(this.id);">
-                    <img class="img-responsive" src="img/logo.png" alt="Requiem Fund for Rickie Makin">
+                <figure class="mix portfolio-item all" id="requiem" style="border:5px solid #00C7FC; padding: 10px 10px;"; onclick="toggleCause(this.id);">
+                    <img class="img-responsive" src="img/logo-with-background.png" alt="Requiem Fund">
 					<a href="#" class="plus btn-primary" data-toggle="modal" data-target="#portfolio-8"></a>
 
 					<!-- Modal -->
@@ -400,7 +426,7 @@
 						  <div class="modal-body row">
 							<div class="container col-sm-12 col-md-12 col-lg-12">
 								<div class="col-sm-3 col-md-3 col-lg-3">
-									<a href="https://www.requiem-fund.org/"><img src="img/logo.png" style="width:120px"></a>
+									<a href="https://www.requiem-fund.org/"><img src="img/logo-with-background.png" style="width:120px"></a>
 								</div>
 								<div class="col-sm-9 col-md-9 col-lg-9">
 									<p>The Requiem Fund is a sub-fund under the Australian Communities Foundation. It was established in 2021 to direct donations to a portfolio of causes in memory of those we've lost. Gifts to this fund are used to support this matched giving program.</p><br>
@@ -529,63 +555,7 @@
         #donors
         ========================== -->
         
-        <section id="donors">
-           <div class="section-title text-center wow fadeInDown">
-                <h2>Campaign</h2>    
-                <p>We celebrate the generosity of those who have made a contribution to the fund. </p>
-            </div>
-   
-			<div class="container">
-                <div class="row">
-                    <div class="counter-section clearfix">
-
-                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.5s">
-                            <div class="fact-item text-center">
-                                <div class="fact-icon">
-                                    <i class="fa fa-hand-holding-usd fa-2x"></i>
-                                </div>
-                                <span id="totalDonations"></span>
-                                <p>Total Donations</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.8s">
-                            <div class="fact-item text-center">
-                                <div class="fact-icon">
-                                    <i class="fa fa-users fa-2x"></i>                                    
-                                </div>
-                                <span id="countDonors"></span>
-                                <p>Donors</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="1.1s">
-                            <div class="fact-item text-center last">
-                                <div class="fact-icon">
-                                    <i class="fa fa-hourglass-half fa-2x"></i>
-                                </div>
-                                <span id="fundsRemaining"></span>
-                                <p>Matching Funds Remaining</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="1.3s">
-                            <div class="fact-item text-center last">
-                                <div class="fact-icon">
-                                    <i class="fa fa-clock fa-2x"></i>
-                                </div>
-                                <span id="daysRunning"></span>
-                                <p>Days Running</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--
-        End #about-us
-        ========================== -->
+ 
 
 		<section id="faq">
 

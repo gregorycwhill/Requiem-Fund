@@ -19,15 +19,15 @@ $(function(){
     /*  Menu item highlighting
     /* ========================================================================= */
 
-    jQuery(window).scroll(function () {
-        if (jQuery(window).scrollTop() > 400) {
-            jQuery("#navigation").css("background-color","#00C7FC");
-            jQuery("#navigation").addClass("animated-nav");
-        } else {
-            jQuery("#navigation").css("background-color","transparent");
-            jQuery("#navigation").removeClass("animated-nav");
-        }
-    });
+//    jQuery(window).scroll(function () {
+//       if (jQuery(window).scrollTop() >= 0) {
+//            jQuery("#navigation").css("background-color","#00C7FC");
+//            jQuery("#navigation").addClass("animated-nav");
+//        } else {
+//            jQuery("#navigation").css("background-color","transparent");
+//            jQuery("#navigation").removeClass("animated-nav");
+//        }
+//    });
 
     $('#nav').onePageNav({
         filter: ':not(.external)',
@@ -35,14 +35,14 @@ $(function(){
         scrollThreshold: 1
     });
 
-    // Slider Height
+/*    // Slider Height
     var slideHeight = $(window).height();
     $('#home-carousel .carousel-inner .item, #home-carousel .video-container').css('height',slideHeight);
 
     $(window).resize(function(){'use strict',
         $('#home-carousel .carousel-inner .item, #home-carousel .video-container').css('height',slideHeight);
     });
-
+*/
     // portfolio filtering
 
     $("#projects").mixItUp();
@@ -139,13 +139,15 @@ function toggleCause(cause) {
 		
 		// cause has been selected
 		
-		fig.style.border="";
+		fig.style.border = "";
+		fig.style.padding = "30px 30px";
 		opt.style.display = "none";
 	}
 	else {
 		// cause has not been selected
 		
 		fig.style.border="5px solid #00C7FC";
+		fig.style.padding="10px 10px";
 		opt.style="display: inline;";
 	}
 }
@@ -158,11 +160,12 @@ function setRequiem() {
 		figs[f].style.border="";
 	}
 	
-	figs[figs.length-1].style.border="5px solid #00C7FC";
+	figs[figs.length-1].style.border = "5px solid #00C7FC";
+	fig.style.padding = "10px 10px";
 	
 	opts = document.getElementsByTagName("label");
 	for (l=0; l<opts.length-1; l++) {
-		if(opts[l].id=="opt-requiem") {
+		if(opts[l].id == "opt-requiem") {
 			opts[l].style.display="inline";
 		}
 		else {

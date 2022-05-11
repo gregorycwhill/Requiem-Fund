@@ -64,12 +64,12 @@ h4, h5, h6 {
 }
 
 body > section {
-    padding: 100px 0;
+    padding: 10px 0;
 }
 
 .section-title {
-  margin: 0 auto 105px;
-  width: 520px;
+  margin: 0 auto 55px;
+  width: 620px;
 }
 
 .section-title h2 {
@@ -91,6 +91,14 @@ body > section {
   width: 100px;
 }
 
+  
+  
+section:before {
+    height: 100px;
+    content: "";
+    display:block;
+}
+
 .section-title h2:after {
 background: none repeat scroll 0 0 #fff;
 border: 1px solid #1F2021;
@@ -107,7 +115,7 @@ width: 11px;
 .section-title p {
     line-height: 25px;
     font-weight: 300;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .btn {
@@ -148,6 +156,10 @@ width: 11px;
           transition: all 0.6s ease;
 }
 
+.animated-nav {
+	  background-color: #00C7FC;
+}
+
 .animated-nav .navbar-brand {
   padding: 15px 0;
 }
@@ -162,6 +174,7 @@ width: 11px;
 
 .animated-nav#navigation > .container {
   border-bottom: none;
+
 }
 
 .navbar-brand {
@@ -179,7 +192,8 @@ width: 11px;
   font-weight: 600;
   padding: 38px 25px;
   text-transform: uppercase;
-}
+  display: block;
+}`
 
 .navigation .navbar-nav > li.current > a {
   color: #00C7FC;
@@ -480,21 +494,22 @@ width: 11px;
     position: relative;
     float: none;
     overflow: hidden;
-    width: 25%;
-	padding: 20px 35px;
+    width: 20%;
+	padding: 30px 30px;
 }
 
 .plus {
   background: url("../img/icons/question-white.png") no-repeat scroll center center #0faed9;
-  background-size: 40px;
+  background-size: 20px;
   border-radius: 50%;
   display: block;
-  height: 80px;
-  left: 50%;
-  margin: -40px 0 0 -40px;
+  height: 40px;
+  left: 25%;
+  margin: -11px 0 0 -21px;
   position: absolute;
   top: -41px;
-  width: 80px;
+  width: 40px;
+  z-index: 10;
     
     -webkit-transition: 0.3s ease-out 0s;
        -moz-transition: 0.3s ease-out 0s;
@@ -505,9 +520,9 @@ width: 11px;
 
 figcaption.mask {
   background-color: #fff;
-  bottom: -80px;
+  bottom: -101px;
   left: 0;
-  padding: 10px 0 10px 10px;
+  padding: 10px 10px 10px 10px;
   position: absolute;
   width: 100%;
     
@@ -523,18 +538,24 @@ figcaption.mask {
 }
 
 .portfolio-item:hover .plus {
-    top: 30%;
+    top: 20px;
 }
 
-figcaption.mask h3 {
+figcaption.mask h5 {
   color: #1f2021;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 figcaption.mask span {
   color: #0FAED9;
 }
+
+
+
+
+
+
 
 body.modal-open {
     overflow: auto!important;
@@ -950,7 +971,7 @@ body.modal-open {
 
 #footer {
     background-color: #121116;
-    padding: 115px 0 35px;
+    padding: 35px 0 15px;
 }
 
 .footer-logo {
@@ -958,7 +979,7 @@ body.modal-open {
 }
 
 .footer-social {
-    margin-bottom: 85px;
+    margin-bottom: 25px;
 }
 
 .footer-social h3 {
