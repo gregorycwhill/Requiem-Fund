@@ -108,7 +108,7 @@
 
          <section id="home">
            <div class="section-title text-center wow fadeInDown" style="padding-top: 30px;">
-                <h2>Matching gifts</h2>
+                <h2>We're matching your donations</h2>
                 <p>The <a href="https://www.requiem-fund.org/" style="color: #096c89; text-decoration: underline;">Requiem Fund</a> is currently matching donations to causes that were supported by those we've lost. In this way, we honour their memories and share their values.</p><br>
 				<p>Thanks to the donors of the <a href="https://requiem-fund.org/RickieMakin/" style="color: #096c89; text-decoration: underline;">Rickie Makin Requiem Fund</a>; their generosity makes this possible.</p><br>
 				<p>The fund is auspiced under the <a href="https://www.communityfoundation.org.au/" style="color: #096c89; text-decoration: underline;">Australian Communities Foundation</a>. </p>
@@ -459,7 +459,7 @@
                 <div class="row">
                     <div class="section-title text-center wow fadeInDown">
                         <h2>Contribute</h2>
-                        <p>The Requiem Fund will match your donation dollar-for-dollar while we can, up to $500 per donor.</p>
+                        <p>The Requiem Fund will match your donation dollar-for-dollar while we can.</p>
                     </div>
 					<div class="col-md-8 col-sm-9 wow fadeInLeft">
                         <div class="contact-form clearfix">
@@ -471,11 +471,11 @@
                                     <input type="email" class="form-control" name="email" placeholder="My Email Address" required="">
                                 </div>
                                 <div class="input-field message">
-                                    <textarea id="msg-txt" name="message"  placeholder="My Message" class="form-control" rows="3" style="height:100%;"></textarea>
+                                    <textarea id="msg-txt" name="message"  placeholder="My Message" class="form-control" rows="2" style="height:100%;"></textarea>
                                 </div>
 								<input type="hidden" id="giftID">
-								<input type="number" class="form-control" name="total" id="gift-total" placeholder="My Amount" required="" min="10" max="500" style="width: 30%;">
-								<br><br><h5 class="">Allocate my gift to</h5><br>
+								<input type="number" class="form-control" name="total" id="gift-total" placeholder="My Amount" required="" min="2" max="10000" style="width: 30%;">
+								<br><br><h5 style="padding: 10px 10px;">Allocate my gift to:</h5><br>
 								<div class="container">
 									<div class="col-sm-8" id="cause-selector" style="display: inline; line-height: 250%">
 										<label class="btn btn-primary btn-sm" id="opt-wslsc" style="display: none;">Warrnambool Surf Life Saving Club</label>
@@ -488,10 +488,44 @@
 										<label class="btn btn-primary btn-sm" id="opt-requiem" style="display: inline;">Requiem Fund</label>
 									</div>				
 								</div>
-									<br><br>
-									<input class="form-check-input" type="checkbox" value="claimMatch">
-									<label class="form-check-label" for="claimMatch"  id="claimMatch"><h5 style="padding: 10px;">YES, I want to claim a matching gift from the Requiem Fund</h5></label>
+								<br>
+								<p class="instructions">Thank you for your generous contribution to this campaign. The Requiem Fund will match up to $500 from our remaining giving pool.</p>
+								<p class="instructions">How would you like to apply these extra funds?</p>
+								
+								<div class="container" style="padding: 10px 10px; line-height: 150%">
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="MatchChoice" id="claim" onchange="hideElem('referral');">
+										<label class="" for="Claim">
+											Claim it for my donation now
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="MatchChoice" onchange="toggleElem('referral');">
+										<label class="form-check-label" for="Claim">
+											Pay it forwards to my friend
+										</label>
+									</div>
+									<div class="input-field" style="display: none" id="referral">
+										<input type="email" class="form-control" name="referral-email" placeholder="My friend's email" style="width: 30%;">
+									</div>	
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="MatchChoice" id="community" checked onchange="hideElem('referral');">
+										<label class="form-check-label" for="Claim">
+											Keep it in the giving pool for others
+										</label>
+									</div>
 
+									<div class="container" style="padding: 20px 0px;">	
+										<input class="form-check-input" type="checkbox" value="hasBoost" onchange="toggleElem('boost');">
+										<label class="form-check-label" for="hasBoost"  id="hasBoost">YES, I have a MatchBoost redemption code</label>
+										<input class="form-text-input" type="text" name="boost" placeholder="Enter MatchBoost code" style="display: none" id="boost">
+
+										<br><input class="form-check-input" type="checkbox" value="claimMatch" checked>
+										<label class="form-check-label" for="claimMatch"  id="claimMatch">YES, I want to learn about further matched giving opportunities</label>
+										
+
+									</div>
+								</div>
                                 <input type="submit" class="btn btn-blue pull-right" value="CONFIRM" id="msg-submit" onclick="" >
                             </form>
                         </div> <!-- end .contact-form -->
@@ -501,13 +535,13 @@
                         <div class="contact-details">
                             <h4>Making a Contribution</h4><br>
                             <p class="instructions">Please complete the details on this form. If you like, you can choose to send a short message to the donor whose gift is being matched with yours. Your email address will be kept private. </p>
-							<p class="instructions">Once submitted, you will then be redirected to the Australian Communities Foundation website to complete the payment in their system.</p>
+							<p class="instructions">Once submitted, you will then be redirected to the <b>Australian Communities Foundation</b> website to complete the payment in their system.</p>
                         </div> <!-- end .contact-details -->
 
                         <div class="contact-details">
                             <h4>About Matching</h4><br>
-                            <p class="instructions">If you claim the matching offer, the Fund will match your gift dollar-for-dollar, while there is money remaining in the matching pool.</p>
-							<p class="instructions">You may also elect to give to this <button class="btn btn-primary btn-sm" style="padding:0px 0px;" onclick="setRequiem();">Requiem Fund</button>. Your gift will then <i>add</i> to the matching pool for use by future donors.</p>
+                            <p class="instructions">When you claim the matching offer, the Fund will match your gift to your selected causes, while there is money remaining in the giving pool.</p>
+							<p class="instructions">If you would like your gift to instead <em>top up</em> the giving pool, you can elect to give just to the <button class="btn btn-primary btn-sm" style="padding:0px 0px;" onclick="setRequiem();">Requiem Fund</button>.</p>
                         </div> <!-- end .contact-details -->
 						
                     </div> <!-- .col-md-4 -->
@@ -603,7 +637,7 @@
 						<div id="question2" class="panel-collapse collapse" style="height: 0px;">
 							<div class="panel-body">
 
-								<p class="instructions">The Australian Communities Foundation <a href="https://www.communityfoundation.org.au/giving/fees">deducts a fee</a> of 2.2% per annum on money held within the fund. This pays for their professional services including administration, auditing, compliance and related governance. This fee is inclusive of any costs they incur by payment providers. Further, a 0.37% per annum investment fee is charged on funds under management, to ensure money is not left idle. These funds are <a href="https://www.communityfoundation.org.au/about/investments">invested responsiby</a> and have provided annualised return to charities in excess of 3% over the last five years.</p>
+								<p class="instructions">The Australian Communities Foundation <a href="https://www.communityfoundation.org.au/giving/fees">deducts a fee</a> of 2.2% per annum on money held within the fund. This pays for their professional services including administration, auditing, compliance and related governance. This fee is inclusive of any costs they incur by payment providers. Further, a 0.37% per annum investment fee is charged on funds under management, to ensure money is not left idle. These funds are <a href="https://www.communityfoundation.org.au/about/investments">invested responsibly</a> and have provided annualised return to charities in excess of 3% over the last five years.</p>
 								
 								<p class="instructions">For the Warrnambool College Prize in Rickie's memory, an intermediary charity called <a href="https://www.schoolsplus.org.au/">Schools Plus</a> is required. This is because of the way the Australian Tax Office governs charities awarding scholarships directly to students. Schools Plus receives an additional 5% for setting up and operating the program.</p>
 							</div>

@@ -152,6 +152,25 @@ function toggleCause(cause) {
 	}
 }
 
+function toggleElem(id) {
+	
+	e = document.getElementById(id);
+	
+	if (e.style.display=="inline") {
+		e.style.display="none";
+	}
+	else {
+		e.style.display="inline";
+	}
+}
+
+function hideElem(id) {
+	
+	e = document.getElementById(id);
+
+	e.style.display="none";
+}
+
 function setRequiem() {
 	
 	
@@ -161,10 +180,10 @@ function setRequiem() {
 	}
 	
 	figs[figs.length-1].style.border = "5px solid #00C7FC";
-	fig.style.padding = "10px 10px";
+	//fig.style.padding = "10px 10px";
 	
 	opts = document.getElementsByTagName("label");
-	for (l=0; l<opts.length-1; l++) {
+	for (l=0; l<8; l++) {
 		if(opts[l].id == "opt-requiem") {
 			opts[l].style.display="inline";
 		}
