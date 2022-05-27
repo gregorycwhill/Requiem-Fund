@@ -173,6 +173,7 @@ function hideElem(id) {
 
 function setRequiem() {
 	
+	// set to select only Requiem Fund as option
 	
 	figs = document.getElementsByTagName("figure");
 	for (f=0;f<figs.length; f++) {
@@ -211,18 +212,18 @@ function submitContribution() {
 	for (i in inputs)
 		inputs[i].disabled="disabled";
 
-	document.getElementById("cause-list").disabled=true;
+	//document.getElementById("cause-list").disabled=true;
 
-	document.getElementById("msg-txt").disabled="disabled";
+/*	document.getElementById("msg-txt").disabled="disabled";
 	dels = document.getElementById("gift-table").getElementsByTagName("svg");
 
 	for (d in dels)
 		dels[d].onclick="";
 
-
+*/
 	$('#submit-dialog').modal('show');
 	
-	procRange(sheetID,"Gifts!A1:B2", postGift);
+	procRange(sheetID,"Matching-Gifts!A1:B2", postGift);
 
 return;
 }
@@ -241,35 +242,71 @@ function postGift(data) {
 	
 		
 	document.getElementById("giftID").value = giftID;	// store giftID in hidden value in form
+	
+	contr = document.getElementsByName("contribution")[0];
 
-	name 	= document.getElementsByName("contribution")[0]["name"].value;
-	email 	= document.getElementsByName("contribution")[0]["email"].value;
-	message = document.getElementsByName("contribution")[0]["message"].value;
-	gtype 	= document.getElementsByName("contribution")[0]["gift-type"].value;
-	amount	= document.getElementsByName("contribution")[0]["total"].value;
+	name 		= contr["name"].value;
+	email 		= contr["email"].value;
+	message 	= contr["message"].value;
+	amount		= contr["total"].value;
+	//choice	= contr["MatchChoice"].value;
+	referral 	= contr["referral-email"].value;	
+	hasBoost	= contr["hasBoost"].checked;
+	boostCode	= contr["boostCode"].value;
+	subscribe	= contr["subscribe"].checked;
 	
-	dt = new Date(Date.now()).toLocaleString().replace(",","");
+	mc 			= contr["MatchChoice"];
 	
-	rows = document.getElementById("gift-table").getElementsByTagName("tr");
+	choice="missing";
+	
+	for(i=0;i<mc.length; i++) {
+		if(mc[i].checked) {
+			choice = mc[i].id;
+		}
+	}
+	
+	dt = new Date(Date.now());
+	
+	dtStr = dt.toISOString();
+	
+	causes = document.getElementById("cause-selector").getElementsByTagName("label");
 	
 	instr = "{";
 	
-	for (r=1; r<rows.length; r++) {		// skip header row
-		instr += rows[r].firstChild.innerText;
-		instr += ":";
-		instr += rows[r].firstChild.nextSibling.nextSibling.innerText;
-		instr += ",";
+	for (r=0; r<causes.length; r++) {		
+		if(causes[r].style.display=="inline") {
+			instr += causes[r].id.substring(4);		// drop leading "opt-"
+			instr += ",";
+		}
 	}
 	
 	instr += "}";
 	instr=instr.replace(",}","}");
 	
-	if (gtype=="whole")
-		instr="";
+	// deal with empty instruction set by reactivating form after prompt
+	if (instr=="{}"){
 	
-	gift = [giftID, dt, name,email,message,gtype,amount ,instr];
+    	alert("Please select at least one cause.\nIf you want to donate to all causes, please just select Requiem Fund.");
+
+		b = document.getElementById("msg-submit");
+		b.style.backgroundColor="#00c7fc";
+		b.value="CONFIRM";	
+		b.disabled=false;	
+
+		inputs=document.getElementsByTagName("label")
+
+		for (i in inputs)
+			inputs[i].disabled=false;
+
+	setRequiem();
+	$('#submit-dialog').modal('hide');
 	
-	range = "Gifts!B"+offset;
+	return;
+	}
+	
+	gift = [giftID, dtStr, name,email,message,amount ,instr,choice,referral,hasBoost,boostCode,subscribe];
+	
+	range = "Matching-Gifts!B"+offset;
 
 	giftStr=gift.join("|");
 	
@@ -280,7 +317,7 @@ function postGift(data) {
 	// build link URL
 	
 	l = document.getElementById("donationLink");
-	details = "&amount="+amount+"&note_text=for:RickieMakin;from:"+email+";giftID="+giftID;
+	details = "&amount="+amount+"&note_text=for:MatchedGiving;from:"+email+";giftID="+giftID;
 	
 	l.href = l.href + details;
 
@@ -297,6 +334,8 @@ function postGift(data) {
 	setTimeout(function(){$('#submit-dialog').modal('hide')},2000);
 	
 	document.getElementById("msg-submit").scrollIntoView(true);
+	
+	setTimeout(function(){window.location.href=l.href},7000);
 	
 	return;	
 }
@@ -335,7 +374,7 @@ function fetchResults() {
 	
 	// fetch Counter
 
-	procRange(sheetID,"Output!C2:F4",updateCounter);  // grab headers too to force array
+	procRange(sheetID,"Output!C2:G4",updateCounter);  // grab headers too to force array
 	
 	
 }
@@ -364,19 +403,19 @@ function updateCounter(data) {
 	
 	// update total donations
 	
-	document.getElementById("totalDonations").innerText = data[1][0];
+	document.getElementById("totalDonations").innerText = data[2][0];
 	
 	// update count of donors
 	
-	document.getElementById("countDonors").innerText = data[1][1];
+	document.getElementById("countDonors").innerText = data[2][1];
 	
 	// update funds remaining
 	
-	document.getElementById("fundsRemaining").innerText = data[1][2];
+	document.getElementById("fundsRemaining").innerText = data[2][2];
 
 	// update days running
 	
-	document.getElementById("daysRunning").innerText = data[1][3];
+	document.getElementById("daysRunning").innerText = data[2][3];
 
 }
 

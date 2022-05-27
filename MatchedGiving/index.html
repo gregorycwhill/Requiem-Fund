@@ -495,13 +495,13 @@
 								<div class="container" style="padding: 10px 10px; line-height: 150%">
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="MatchChoice" id="claim" onchange="hideElem('referral');">
-										<label class="" for="Claim">
+										<label class="" for="MatchChoice" value="claim">
 											Claim it for my donation now
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="MatchChoice" onchange="toggleElem('referral');">
-										<label class="form-check-label" for="Claim">
+										<input class="form-check-input" type="radio" name="MatchChoice" id="friend" onchange="toggleElem('referral');">
+										<label class="form-check-label" for="MatchChoice" value="friend">
 											Pay it forwards to my friend
 										</label>
 									</div>
@@ -510,18 +510,18 @@
 									</div>	
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="MatchChoice" id="community" checked onchange="hideElem('referral');">
-										<label class="form-check-label" for="Claim">
+										<label class="form-check-label" for="MatchChoice" value="community">
 											Keep it in the giving pool for others
 										</label>
 									</div>
 
 									<div class="container" style="padding: 20px 0px;">	
-										<input class="form-check-input" type="checkbox" value="hasBoost" onchange="toggleElem('boost');">
-										<label class="form-check-label" for="hasBoost"  id="hasBoost">YES, I have a MatchBoost redemption code</label>
-										<input class="form-text-input" type="text" name="boost" placeholder="Enter MatchBoost code" style="display: none" id="boost">
+										<input class="form-check-input" type="checkbox" name="hasBoost" onchange="toggleElem('boostCode');">
+										<label class="form-check-label" for="hasBoost"  id="hasBoost" value="true">YES, I have a MatchBoost redemption code</label>
+										<input class="form-text-input" type="text" name="boostCode" placeholder="Enter MatchBoost code" style="display: none" id="boostCode">
 
-										<br><input class="form-check-input" type="checkbox" value="claimMatch" checked>
-										<label class="form-check-label" for="claimMatch"  id="claimMatch">YES, I want to learn about further matched giving opportunities</label>
+										<br><input class="form-check-input" type="checkbox" name="subscribe" checked>
+										<label class="form-check-label" for="subscribe"  id="subscribe" value="true">YES, I want to learn about further matched giving opportunities</label>
 										
 
 									</div>
@@ -577,12 +577,12 @@
         End #contribute
         ========================== -->
 
-		<div id="response" class="text-center" style="display:none" >
+		<div id="response" class="counter-section clearfix text-center" style="display:none; color: #fff;" >
 			<div class="text-center">
 				<img height="76px;" width="76px;" src="img/icons/check.png">
 			</div>
 			<br/><h2>Thank you for your gift</h2><br/>
-			<h4>Please click through to the <a id="donationLink" href="https://australiacf.fcsuite.com/erp/donate/create?funit_id=1497" style="color: #ffffff; background-color: #00c7fc; text-decoration: underline;" target="_blank">Australian Communities Foundation</a> website to complete your donation.</h4><br/>
+			<h4>If you are not automatically redirected, please click through to the <a id="donationLink" href="https://australiacf.fcsuite.com/erp/donate/create?funit_id=1497" style="color: #ffffff; background-color: #00c7fc; text-decoration: underline;" target="_blank">Australian Communities Foundation</a> website to complete your donation.</h4><br/>
 			<h5>Remember to provide the same email address there to ensure your instructions are followed.</h5>
 		</div>
          <!--
